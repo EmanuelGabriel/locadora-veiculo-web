@@ -20,10 +20,6 @@ public class ModeloCarroDAO implements Serializable {
 	@Inject
 	private EntityManager manager;
 
-	public ModeloCarro buscarPeloCodigo(Long codigo) {
-		return manager.find(ModeloCarro.class, codigo);
-	}
-
 	public void salvar(ModeloCarro modeloCarro) {
 		manager.merge(modeloCarro);
 	}
@@ -44,6 +40,10 @@ public class ModeloCarroDAO implements Serializable {
 		} catch (PersistenceException e) {
 			throw new RegraNegocioException(REGRA_NEGOCIO_MODELO_VEICULO);
 		}
+	}
+
+	public ModeloCarro buscarPeloCodigo(Long codigo) {
+		return manager.find(ModeloCarro.class, codigo);
 	}
 
 }

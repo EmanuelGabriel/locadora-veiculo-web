@@ -15,6 +15,7 @@ public class Acessorio implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "codigo", nullable = false, updatable = false)
 	private Long codigo;
 
 	@Column(nullable = false, length = 50)

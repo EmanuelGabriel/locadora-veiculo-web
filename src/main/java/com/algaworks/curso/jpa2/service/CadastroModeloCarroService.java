@@ -1,6 +1,7 @@
 package com.algaworks.curso.jpa2.service;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -28,6 +29,12 @@ public class CadastroModeloCarroService implements Serializable {
 		this.modeloCarroDAO.salvar(modeloCarro);
 	}
 
-	
-	
+	public List<ModeloCarro> buscarTodos() {
+		return this.modeloCarroDAO.buscarTodos();
+	}
+
+	public void remover(ModeloCarro modeloCarro) throws RegraNegocioException {
+		this.modeloCarroDAO.excluir(modeloCarro);
+	}
+
 }

@@ -22,9 +22,11 @@
 	    	<p:dataTable id="acessoriosTable" value="#{pesquisaAcessorioBean.acessorios}" var="acessorio"
 		    		style="margin-top: 20px" emptyMessage="Nenhum acessorio encontrado." rows="20"
 		    		paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom">
+		    		
 		    		<p:column headerText="Código" style="text-align: center; width: 100px">
 		    			<h:outputText value="#{acessorio.codigo}" />
 		    		</p:column>
+		    		
 		    		<p:column headerText="Descrição">
 		    			<h:outputText value="#{acessorio.descricao}" />
 		    		</p:column>

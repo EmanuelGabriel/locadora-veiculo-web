@@ -3,7 +3,7 @@ package com.algaworks.curso.jpa2.util.jsf;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
-public class FacesUtil {
+public abstract class FacesUtil {
 
 	public static void addSuccessMessage(String message) {
 		FacesContext.getCurrentInstance().addMessage(null,

@@ -9,15 +9,16 @@ import com.algaworks.curso.jpa2.dao.CarroDAO;
 import com.algaworks.curso.jpa2.modelo.Carro;
 import com.algaworks.curso.jpa2.util.cdi.CDIServiceLocator;
 
-@FacesConverter(forClass=Carro.class)
+@FacesConverter(forClass = Carro.class)
 public class CarroConverter implements Converter {
 
 	private CarroDAO carroDAO;
-	
+
 	public CarroConverter() {
 		this.carroDAO = CDIServiceLocator.getBean(CarroDAO.class);
 	}
-	
+
+	@SuppressWarnings("deprecation")
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
 		Carro retorno = null;
@@ -34,10 +35,10 @@ public class CarroConverter implements Converter {
 		if (value != null) {
 			Long codigo = ((Carro) value).getCodigo();
 			String retorno = (codigo == null ? null : codigo.toString());
-			
+
 			return retorno;
 		}
-		
+
 		return "";
 	}
 

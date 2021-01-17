@@ -1,6 +1,8 @@
 package com.algaworks.curso.jpa2.modelo;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,13 +28,17 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = "Carro.buscarTodos", query = "select c from Carro c inner join fetch c.modelo"),
-		@NamedQuery(name = "Carro.buscarCarroComAcessorios", query = "select c "
-				+ "	from Carro c JOIN c.acessorios a " + " where c.codigo = :codigo") })
-public class Carro {
+@NamedQueries({
+		@NamedQuery(name = "Carro.buscarTodos", query = "SELECT c FROM Carro c JOIN FETCH c.modelo ORDER BY c.codigo"),
+		@NamedQuery(name = "Carro.buscarCarroComAcessorios", query = "SELECT c "
+				+ "	FROM Carro c JOIN c.acessorios a " + " WHERE c.codigo = :codigo") })
+public class Carro implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "codigo", nullable = false, updatable = false)
 	private Long codigo;
 
 	@Column(nullable = false, length = 10)
@@ -54,7 +60,7 @@ public class Carro {
 	@JoinTable(name = "carro_acessorio", 
 	joinColumns = @JoinColumn(name = "codigo_carro"), 
 	inverseJoinColumns = @JoinColumn(name = "codigo_acessorio"))
-	private List<Acessorio> acessorios;
+	private List<Acessorio> acessorios = new ArrayList<>();
 
 	@OneToMany(mappedBy = "carro")
 	private List<Aluguel> alugueis;
@@ -64,6 +70,9 @@ public class Carro {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataModificacao;
+
+	public Carro() {
+	}
 
 	public Long getCodigo() {
 		return codigo;

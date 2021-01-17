@@ -2,6 +2,7 @@ package com.algaworks.curso.jpa2.controller;
 
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -17,15 +18,16 @@ public class CadastroAcessorioBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Acessorio acessorio;
-	
 	@Inject
 	private CadastroAcessorioService cadastroAcessorioService;
-	
-	public CadastroAcessorioBean() {
+
+	private Acessorio acessorio;
+
+	@PostConstruct
+	public void init() {
 		this.limpar();
 	}
-	
+
 	public void salvar() {
 		try {
 			this.cadastroAcessorioService.salvar(acessorio);
@@ -33,10 +35,10 @@ public class CadastroAcessorioBean implements Serializable {
 		} catch (RegraNegocioException e) {
 			FacesUtil.addErrorMessage(e.getMessage());
 		}
-		
+
 		this.limpar();
 	}
-	
+
 	public void limpar() {
 		this.acessorio = new Acessorio();
 	}
@@ -44,8 +46,9 @@ public class CadastroAcessorioBean implements Serializable {
 	public Acessorio getAcessorio() {
 		return acessorio;
 	}
+
 	public void setAcessorio(Acessorio acessorio) {
 		this.acessorio = acessorio;
 	}
-	
+
 }

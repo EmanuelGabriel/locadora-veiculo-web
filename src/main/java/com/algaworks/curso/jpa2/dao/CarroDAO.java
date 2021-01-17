@@ -57,7 +57,7 @@ public class CarroDAO implements Serializable {
 	}
 
 	public Long encontrarQuantidadeDeCarros() {
-		return manager.createQuery("select count(c) from Carro c", Long.class).getSingleResult();
+		return manager.createQuery("SELECT count(c) FROM Carro c", Long.class).getSingleResult();
 	}
 	
 }

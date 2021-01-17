@@ -23,6 +23,7 @@ public abstract class Pessoa {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "codigo", nullable = false, updatable = false)
 	private Long codigo;
 
 	private String nome;

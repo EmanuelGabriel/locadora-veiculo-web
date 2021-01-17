@@ -17,28 +17,29 @@ import com.algaworks.curso.jpa2.util.jsf.FacesUtil;
 public class CadastroFabricanteBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	private static final String MSG_FABRICANTE_SALVO = "Fabricante salvo com sucesso!";
 
 	@Inject
 	private CadastroFabricanteService cadastroFabricanteService;
-	
+
 	private Fabricante fabricante;
-	
+
+	@PostConstruct
+	public void init() {
+		this.limpar();
+	}
+
 	public void salvar() {
 		try {
-			this.cadastroFabricanteService.salvar(fabricante);
-			FacesUtil.addSuccessMessage("Fabricante salvo com sucesso!");
-			
+			this.cadastroFabricanteService.criar(fabricante);
+			FacesUtil.addSuccessMessage(MSG_FABRICANTE_SALVO);
+
 			this.limpar();
 		} catch (RegraNegocioException e) {
 			FacesUtil.addErrorMessage(e.getMessage());
 		}
 	}
-	
-	@PostConstruct
-	public void init() {
-		this.limpar();
-	}
-	
+
 	public void limpar() {
 		this.fabricante = new Fabricante();
 	}
@@ -46,10 +47,9 @@ public class CadastroFabricanteBean implements Serializable {
 	public Fabricante getFabricante() {
 		return fabricante;
 	}
+
 	public void setFabricante(Fabricante fabricante) {
 		this.fabricante = fabricante;
 	}
-	
-	
-	
+
 }

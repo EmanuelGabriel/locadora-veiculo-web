@@ -9,19 +9,23 @@ import com.algaworks.curso.jpa2.dao.AcessorioDAO;
 import com.algaworks.curso.jpa2.modelo.Acessorio;
 import com.algaworks.curso.jpa2.util.cdi.CDIServiceLocator;
 
-@FacesConverter("acessorioConverter")
+// @FacesConverter("acessorioConverter")
+// @FacesConverter(forClass = Acessorio.class, value = "acessorioConverter")
+@FacesConverter(value = "acessorioConverter", forClass = Acessorio.class)
 public class AcessorioConverter implements Converter {
 
 	private AcessorioDAO acessorioDAO;
-	
+
 	public AcessorioConverter() {
 		this.acessorioDAO = CDIServiceLocator.getBean(AcessorioDAO.class);
+
 	}
-	
+
+	@SuppressWarnings("deprecation")
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
 		Acessorio retorno = null;
-		
+
 		if (value != null) {
 			retorno = this.acessorioDAO.buscarPeloCodigo(new Long(value));
 		}
@@ -34,10 +38,10 @@ public class AcessorioConverter implements Converter {
 		if (value != null) {
 			Long codigo = ((Acessorio) value).getCodigo();
 			String retorno = (codigo == null ? null : codigo.toString());
-			
+
 			return retorno;
 		}
-		
+
 		return "";
 	}
 

@@ -21,7 +21,7 @@ import javax.faces.event.SystemEventListener;
  * @author Steve Taylor
  */
 public class ViewScopedContext implements Context, SystemEventListener {
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T get(final Contextual<T> component) {
@@ -37,6 +37,7 @@ public class ViewScopedContext implements Context, SystemEventListener {
 		return instance;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T get(final Contextual<T> component, final CreationalContext<T> creationalContext) {
 		assertActive();
@@ -92,11 +93,12 @@ public class ViewScopedContext implements Context, SystemEventListener {
 	/**
 	 * We get PreDestroyViewMapEvent events from the JSF servlet and destroy our
 	 * contextual instances. This should (theoretically!) also get fired if the
-	 * webapp closes, so there should be no need to manually track all view
-	 * scopes and destroy them at a shutdown.
+	 * webapp closes, so there should be no need to manually track all view scopes
+	 * and destroy them at a shutdown.
 	 * 
 	 * @see javax.faces.event.SystemEventListener#processEvent(javax.faces.event.SystemEvent)
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void processEvent(final SystemEvent event) {
 		if (event instanceof PreDestroyViewMapEvent) {
@@ -106,11 +108,13 @@ public class ViewScopedContext implements Context, SystemEventListener {
 			if (componentInstanceMap != null) {
 				for (Map.Entry<Contextual<?>, Object> componentEntry : componentInstanceMap.entrySet()) {
 					/*
-					 * No way to inform the compiler of type <T> information, so
-					 * it has to be abandoned here :(
+					 * No way to inform the compiler of type <T> information, so it has to be
+					 * abandoned here :(
 					 */
+					@SuppressWarnings("rawtypes")
 					Contextual contextual = componentEntry.getKey();
 					Object instance = componentEntry.getValue();
+					@SuppressWarnings("rawtypes")
 					CreationalContext creational = creationalContextMap.get(contextual);
 
 					contextual.destroy(instance, creational);

@@ -19,9 +19,12 @@
     			</p:toolbarGroup>
     		</p:toolbar>
     	
-	    	<p:dataTable id="fabricantesTable" value="#{pesquisaFabricanteBean.fabricantes}" var="fabricante"
-		    		style="margin-top: 20px" emptyMessage="Nenhum fabricante encontrado." rows="20"
-		    		paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom">
+    	     <!-- value="#{pesquisaFabricanteBean.fabricantes}" -->
+	    	<p:dataTable id="fabricantesTable" value="#{pesquisaFabricanteBean.lazyFabricanteDataModel}" var="fabricante"
+		    		style="margin-top: 20px" emptyMessage="Nenhum fabricante encontrado." rows="5"
+		    		paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom" 
+		    		lazy="true" rowsPerPageTemplate="5,10,15">
+		    		
 		    		<p:column headerText="Código" style="text-align: center; width: 100px">
 		    			<h:outputText value="#{fabricante.codigo}" />
 		    		</p:column>

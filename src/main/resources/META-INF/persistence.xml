@@ -4,19 +4,18 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 	
 	<persistence-unit name="locadoraVeiculoPU" transaction-type="RESOURCE_LOCAL">
-		<class>com.algaworks.curso.jpa2.modelo.Fabricante</class>
-		<class>com.algaworks.curso.jpa2.modelo.Acessorio</class>
-		<class>com.algaworks.curso.jpa2.modelo.Aluguel</class>
-		<class>com.algaworks.curso.jpa2.modelo.Carro</class>
-		<class>com.algaworks.curso.jpa2.modelo.Funcionario</class>
-		<class>com.algaworks.curso.jpa2.modelo.Motorista</class>
-		<class>com.algaworks.curso.jpa2.modelo.Pessoa</class>
+		<class>com.emanuelgabriel.curso.jpa2.modelo.Fabricante</class>
+		<class>com.emanuelgabriel.curso.jpa2.modelo.Acessorio</class>
+		<class>com.emanuelgabriel.curso.jpa2.modelo.Aluguel</class>
+		<class>com.emanuelgabriel.curso.jpa2.modelo.Carro</class>
+		<class>com.emanuelgabriel.curso.jpa2.modelo.Funcionario</class>
+		<class>com.emanuelgabriel.curso.jpa2.modelo.Motorista</class>
+		<class>com.emanuelgabriel.curso.jpa2.modelo.Pessoa</class>
+	
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/dbalocadoraweb?createDatabaseIfNotExist=true&amp;useTimezone=true&amp;serverTimezone=UTC"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>
 			<property name="javax.persistence.jdbc.password" value="gomesgomes"/>
-			
-			<!-- <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/> -->
 			
 			<property name="hibernate.generate_statistics" value="true" />
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
@@ -29,6 +28,7 @@
 			<property name="hibernate.show_sql" value="true"/>
 			<property name="hibernate.format_sql" value="true"/>
 		</properties>
+	
 	</persistence-unit>
 	
 </persistence>

@@ -20,9 +20,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.algaworks.curso.jpa2.modelo.Aluguel;
-import com.algaworks.curso.jpa2.modelo.Carro;
-import com.algaworks.curso.jpa2.modelo.ModeloCarro;
+import com.emanuelgabriel.curso.jpa2.modelo.Aluguel;
+import com.emanuelgabriel.curso.jpa2.modelo.Carro;
+import com.emanuelgabriel.curso.jpa2.modelo.ModeloCarro;
 
 public class ExemplosCriteria {
 

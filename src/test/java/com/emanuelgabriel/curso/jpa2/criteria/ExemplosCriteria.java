@@ -1,4 +1,4 @@
-package com.algaworks.curso.jpa2.criteria;
+package com.emanuelgabriel.curso.jpa2.criteria;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -171,6 +171,7 @@ public class ExemplosCriteria {
 		CriteriaQuery<Carro> criteriaQuery = builder.createQuery(Carro.class);
 		
 		Root<Carro> carro = criteriaQuery.from(Carro.class);
+		@SuppressWarnings({ "rawtypes", "unchecked" })
 		Join<Carro, ModeloCarro> modelo = (Join) carro.fetch("modelo");
 		
 		criteriaQuery.select(carro);

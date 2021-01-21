@@ -1,4 +1,4 @@
-package com.algaworks.curso.jpa2.criteria;
+package com.emanuelgabriel.curso.jpa2.criteria;
 
 import java.math.BigDecimal;
 

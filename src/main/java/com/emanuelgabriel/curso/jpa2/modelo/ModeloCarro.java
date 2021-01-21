@@ -25,7 +25,7 @@ public class ModeloCarro implements Serializable {
 	@Column(nullable = true, length = 50)
 	private String descricao;
 
-	@ManyToOne // (fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "codigo_fabricante")
 	private Fabricante fabricante;
 
